@@ -1,0 +1,37 @@
+// Fonts
+// @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// Variables
+@import "variables";
+// Font-Awesome
+$fa-font-path: "../../../node_modules/font-awesome/fonts" !default;
+@import "~font-awesome/scss/font-awesome.scss";
+// Bulma
+@import "~bulma/sass/utilities/initial-variables";
+@import "bulma-custom";
+@import "~bulma/bulma";
+.topic {
+    .views {
+        padding-left: 20px !important;
+        width: 100px;
+    }
+    .author {
+        width: 200px;
+    }
+    .column {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: $text;
+    }
+    &:not(:last-of-type) {
+        margin-bottom: 0 !important;
+    }
+    padding: 15px;
+    border-bottom: 1px solid $border;
+    &:first-child {
+        border-top: 1px solid $border;
+    }
+    &:hover {
+        background-color: $white-ter;
+    }
+}

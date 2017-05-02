@@ -1,0 +1,31 @@
+// 2. Set your own initial variables
+// Update blue
+$blue: #72d0eb;
+// Add pink
+$pink: #ffb3b3;
+// Add a serif family
+$family-serif: "Merriweather",
+"Georgia",
+serif;
+// 3. Set the derived variables
+// Use the new pink as the primary color
+// $primary: $pink;
+// Use the existing orange as the danger color
+// $danger: $orange;
+// Use the new serif family
+// @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// $family-primary: "Raleway";// $family-serif;
+.fa {
+    &.fa-2x {
+        font-size: 2em;
+    }
+    &.fa-3x {
+        font-size: 3em;
+    }
+    &.fa-4x {
+        font-size: 4em;
+    }
+    &.fa-5x {
+        font-size: 5em;
+    }
+}
