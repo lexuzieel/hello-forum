@@ -35,3 +35,21 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts" !default;
         background-color: $white-ter;
     }
 }
+
+.post {
+    padding: 15px;
+    &:not(:last-of-type) {
+        border-bottom: 1px solid $border;
+    }
+    .author {
+        margin-bottom: 30px !important;
+        p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .name {
+            padding: 0 20px;
+        }
+    }
+}
