@@ -11,7 +11,9 @@
 
 <body>
     <div id="app">
-        @yield('app')
+        @yield('content')
+
+        @include('modals._all')
     </div>
 
     <script src="{{ mix('/js/app.js') }}"></script>

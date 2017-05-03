@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -15,8 +14,24 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('section-item', require('./components/SectionItem.vue'));
+Vue.component('modal', require('./components/Modal.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        showModal: {
+            login: false,
+            addSection: false,
+            addTopic: false
+        }
+    },
+    methods: {
+        onUserUpdate() {
+            let value = document.getElementById('user-role').value;
+            if(value) {
+                // TODO: Send request to the server
+                console.log(value);
+            }
+        }
+    }
 });

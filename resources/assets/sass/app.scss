@@ -9,6 +9,21 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts" !default;
 @import "~bulma/sass/utilities/initial-variables";
 @import "bulma-custom";
 @import "~bulma/bulma";
+[v-cloak] {
+    display: none;
+}
+
+.index .column .remove.button {
+    float: right;
+    top: 14px;
+    right: 14px;
+    display: none;
+}
+
+.index .column:hover .button {
+    display: inherit;
+}
+
 .topic {
     .views {
         padding-left: 20px !important;
@@ -38,8 +53,10 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts" !default;
 
 .post {
     padding: 15px;
-    &:not(:last-of-type) {
-        border-bottom: 1px solid $border;
+    border-bottom: 1px solid $border;
+    &:last-child,
+    .post-form & {
+        border-bottom: none;
     }
     .author {
         margin-bottom: 30px !important;
@@ -52,4 +69,17 @@ $fa-font-path: "../../../node_modules/font-awesome/fonts" !default;
             padding: 0 20px;
         }
     }
+    .remove.button {
+        position: absolute;
+        right: 15px;
+        z-index: 1;
+        display: none;
+    }
+    &:hover .remove.button {
+        display: inherit;
+    }
+}
+
+.post-container {
+    position: relative;
 }

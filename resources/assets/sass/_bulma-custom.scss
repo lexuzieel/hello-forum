@@ -1,15 +1,15 @@
 // 2. Set your own initial variables
 // Update blue
-$blue: #72d0eb;
+// $blue: #72d0eb;
 // Add pink
-$pink: #ffb3b3;
+// $pink: #ffb3b3;
 // Add a serif family
 $family-serif: "Merriweather",
 "Georgia",
 serif;
 // 3. Set the derived variables
 // Use the new pink as the primary color
-// $primary: $pink;
+// $primary: #5bad00;
 // Use the existing orange as the danger color
 // $danger: $orange;
 // Use the new serif family
@@ -28,4 +28,5 @@ serif;
     &.fa-5x {
         font-size: 5em;
     }
+    font-size: inherit !important;
 }
