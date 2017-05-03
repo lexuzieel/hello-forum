@@ -88,7 +88,7 @@
     <div class="hero-body">
         <p>Вы должны авторизоваться для того, чтобы оставить сообщение.</p>
         <br>
-        <button class="button is-inverted is-info" @click="showModal.login = true">Авторизоваться</button>
+        <button class="button is-inverted is-info" @click="loginModal.show = true">Авторизоваться</button>
     </div>
 </div>
 <div id="reply" class="post-form hero is-light has-text-centered">

@@ -7,7 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    protected $primaryKey = 'login';
+
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'login', 'email', 'password', 'first_name', 'last_name', 'role_title'
     ];
 
     /**
@@ -24,6 +26,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 'remember_token'
     ];
+
+    public function role() {
+        return $this->belongsTo(Role::class);
+    }
 }

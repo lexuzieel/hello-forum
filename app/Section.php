@@ -14,4 +14,8 @@ class Section extends Model
     protected $fillable = [
         'name', 'user_login'
     ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

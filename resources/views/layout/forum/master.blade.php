@@ -11,35 +11,43 @@
             <div class="level">
                 <div class="level-left">
                     <div class="level-item">
-                        @include('layout.forum.breadcrumbs', ['links' => ['Разделы' => '/', 'Название раздела' => '/section', 'Название темы' => '/section/topic']])
+                    @isset($breadcrumbs)
+                        @include('layout.forum.breadcrumbs', ['links' => $breadcrumbs])
+                    @endisset
                     </div>
                 </div>
                 <div class="level-right is-hidden-tablet-only">
-
+                
+                    @if(Auth::check())
                     <div class="level-item">
-                        <!--
-                        <button class="button is-primary" @click="showModal.login = true">Авторизоваться</button>
-                        -->
-                        Вы вошли как username (администратор)
+                        Вы вошли как {{ Auth::user()->login }} ({{ mb_strtolower(Auth::user()->role->name) }})
                         &nbsp;
                     </div>
+                    
                     <div class="level-item">
-                        <button class="button is-small">
+                        <a class="button is-small" href="/logout">
                             Выйти&nbsp;
                             <span class="icon is-small">
                                 <i class="fa fa-angle-right"></i>
                             </span>
-                        </button>
+                        </a>
                     </div>
+                    @else
+                        <div class="level-item">
+                            <button class="button is-primary" @click="loginModal.show = true">Авторизоваться</button>
+                        </div>
+                    @endif
 
                 </div>
             </div>
             <div class="level">
                 <div class="level-left">
+
                     <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
-                        <!--
-                        <button class="button is-primary" @click="showModal.login = true">Авторизоваться</button>
-                        -->
+                        <button class="button is-primary" @click="loginModal.show = true">Авторизоваться</button>
+                    </div>
+                    <!--
+                    <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
                         Вы вошли как username (администратор)
                         &nbsp;
                     </div>
@@ -51,8 +59,9 @@
                             </span>
                         </button>
                     </div>
-
+                    -->
                 </div>
+                <!--
                 <div class="level-right">
                     <div class="level-item">
                         <div class="field">
@@ -74,6 +83,7 @@
                         </button>
                     </div>
                 </div>
+                -->
             </div>
             <hr>
             

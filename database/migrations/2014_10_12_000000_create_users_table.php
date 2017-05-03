@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role_title');
             $table->foreign('role_title')->references('title')->on('roles')->onDelete('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -15,6 +15,12 @@
 
         @include('modals._all')
     </div>
+    
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
 
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>

@@ -11,14 +11,6 @@
 <script>
 export default {
     props: [ 'show', 'max-width' ],
-    mounted() {
-        console.log('Component mounted.')
-    },
-    data() {
-        return {
-            
-        }
-    },
     methods: {
         onClose() {
             alert()
