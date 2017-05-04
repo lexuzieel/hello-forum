@@ -25,7 +25,7 @@
             {{ $topic->name }}
         </div>
         <div class="views column has-text-left is-narrow is-hidden-touch">
-            <li class="fa fa-comments-o"></li>&nbsp;{{ $topic->section->topics()->count() }}
+            <li class="fa fa-comments-o"></li>&nbsp;{{ $topic->posts()->count() }}
         </div>
         <div class="author column has-text-centered is-narrow is-hidden-touch">
             {{ $topic->user->name }}
