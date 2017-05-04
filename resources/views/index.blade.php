@@ -25,7 +25,7 @@
 <div class="index columns is-multiline">
 @foreach($sections as $section)
     <div class="column is-half">
-        <button class="remove button is-danger is-small" @click="onSectionDelete" id="{{ $section->id }}">Удалить</button>
+        <button class="remove button is-danger is-small" @click="onSectionDelete({{ $section->id }})">Удалить</button>
         <a class="section box" href="{{ route('section.show', ['id' => $section->id]) }}#content">
             <p class="title">{{ $section->name }}</p>
             <p class="subtitle">

@@ -26,7 +26,9 @@ const app = new Vue({
                 password: ''
             }
         },
-        sectionName: ''
+        sectionName: '',
+        topicName: '',
+        postContent: ''
     },
     methods: {
         onLogin() {
@@ -37,6 +39,7 @@ const app = new Vue({
                     password
                 })
                 .then(response => {
+                    //console.log(response);
                     location.reload();
                 })
                 .catch(error => {
@@ -52,6 +55,7 @@ const app = new Vue({
                     password
                 })
                 .then(response => {
+                    //console.log(response);
                     location.reload();
                 })
                 .catch(error => {
@@ -64,6 +68,7 @@ const app = new Vue({
                     name: this.sectionName
                 })
                 .then(response => {
+                    //console.log(response);
                     location.reload();
                 })
                 .catch(error => {
@@ -71,11 +76,64 @@ const app = new Vue({
                 });
             // TODO: Remove logs
         },
-        onSectionDelete(e) {
-            axios.post('/section/remove', {
-                    id: e.target.id
+        onSectionDelete(id) {
+            axios.post('/section/delete', {
+                    id: id
                 })
                 .then(response => {
+                    //console.log(response);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            // TODO: Remove logs
+        },
+        onTopicAdd(section) {
+            axios.post('/section/' + section + '/topic/add', {
+                    name: this.topicName
+                })
+                .then(response => {
+                    //console.log(response);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            // TODO: Remove logs
+        },
+        onTopicDelete(id) {
+            axios.post('/section/topic/delete', {
+                    id: id
+                })
+                .then(response => {
+                    //console.log(response);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            // TODO: Remove logs
+        },
+        onPostAdd(topic) {
+            axios.post('/section/topic/' + topic + '/post/add', {
+                    content: this.postContent
+                })
+                .then(response => {
+                    //console.log(response);
+                    location.reload();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            // TODO: Remove logs
+        },
+        onPostDelete(id) {
+            axios.post('/section/topic/post/delete', {
+                    id: id
+                })
+                .then(response => {
+                    //console.log(response);
                     location.reload();
                 })
                 .catch(error => {

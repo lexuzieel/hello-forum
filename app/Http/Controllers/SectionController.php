@@ -42,7 +42,7 @@ class SectionController extends Controller
         $section->save();
     }
 
-    public function remove(Request $request) {
+    public function delete(Request $request) {
         if(! Auth::check()) abort(401);
 
         $this->validate($request, [

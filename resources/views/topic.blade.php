@@ -2,6 +2,7 @@
 
 @section('section.before')
 
+@if(Auth::check())
 <div class="level">
     <div class="level-left">
         <div class="level-item">
@@ -18,10 +19,11 @@
         </div>
         --}}
         <div class="level-item">
-            <a class="button is-danger"><li class="fa fa-close"></li>&nbsp;Удалить тему</a>
+            <a class="button is-danger" @click="onTopicDelete({{ $topic->id }})"><li class="fa fa-close"></li>&nbsp;Удалить тему</a>
         </div>
     </div>
 </div>
+@endif
 
 <div class="level is-hidden-touch">
     <div class="level-left">
@@ -37,33 +39,33 @@
 
 @section('section')
 
+@if(count($posts) > 0)
 <div class="post-container">
 
-@foreach($posts as $post)
-    <div class="post columns is-gapless">
-        <button class="remove button is-danger is-small">Удалить</button>
-        <div class="author column is-3 has-text-centered">
-            <p class="name title is-4">{{ $post->user->full_name }}</p>
-            <p class="role subtitle is-6">{{ $post->user->login }}</p>
-            <p class="role subtitle is-6">{{ $post->user->role->name }}</p>
-        </div>
-        <div class="body column" style="position: relative">
-            <div class="content">
-                {!! $post->content !!}
+    @foreach($posts as $post)
+        <div class="post columns is-gapless">
+            <button class="remove button is-danger is-small" @click="onPostDelete({{ $post->id }})">Удалить</button>
+            <div class="author column is-3 has-text-centered">
+                <p class="name title is-4">{{ $post->user->full_name }}</p>
+                <p class="role subtitle is-6">{{ $post->user->login }}</p>
+                <p class="role subtitle is-6">{{ $post->user->role->name }}</p>
+            </div>
+            <div class="body column" style="position: relative">
+                <div class="content">
+                    {!! $post->content !!}
+                </div>
             </div>
         </div>
-    </div>
-@endforeach
+    @endforeach
 
 </div>
-
-<!--
-<div class="hero is-large"></div>
-    <div class="hero-body has-text-centered">
-        <h1 class="title">В данной теме нет сообщений</h1>
+@else
+    <div class="hero is-medium">
+        <div class="hero-body has-text-centered">
+            <h1 class="title">В данной теме нет сообщений</h1>
+        </div>
     </div>
-</div>
--->
+@endif
 
 @endsection
 
@@ -103,7 +105,7 @@
                 <div class="column">
                     <div class="field">
                         <p class="control">
-                            <textarea class="textarea" placeholder="Содержимое сообщения"></textarea>
+                            <textarea class="textarea" placeholder="Содержимое сообщения" v-model="postContent"></textarea>
                         </p>
                     </div>
                 </div>
@@ -111,7 +113,7 @@
             
             <div class="level">
                 <div class="level-item">
-                    <button class="button is-primary">Отправить</button>
+                    <button class="button is-primary" @click="onPostAdd({{ $topic->id }})">Отправить</button>
                 </div>
             </div>
 

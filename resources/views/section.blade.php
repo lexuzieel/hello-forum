@@ -5,10 +5,10 @@
     <h1 class="title">Новая тема</h1>
     <div class="field has-addons">
         <p class="control is-expanded">
-            <input class="input" type="text" placeholder="Название темы">
+            <input class="input" type="text" placeholder="Название темы"  v-model="topicName">
         </p>
         <p class="control">
-            <a class="button is-primary">
+            <a class="button is-primary" @click="onTopicAdd({{ $section->id}} )">
                 &nbsp;Создать тему
             </a>
         </p>
