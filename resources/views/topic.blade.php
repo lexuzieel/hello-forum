@@ -11,7 +11,7 @@
     </div>
     <div class="level-right">
         <div class="level-item">
-            <a class="button is-primary" href="#reply"><li class="fa fa-pencil"></li>&nbsp;Написать сообщение</a>
+            <a class="button is-primary" href="#reply"><li class="fa fa-pencil"></li>&nbsp;@lang('navigation.button.add-post')</a>
         </div>
         {{--
         <div class="level-item">
@@ -19,7 +19,7 @@
         </div>
         --}}
         <div class="level-item">
-            <a class="button is-danger" @click="onTopicDelete({{ $topic->id }})"><li class="fa fa-close"></li>&nbsp;Удалить тему</a>
+            <a class="button is-danger" @click="onTopicDelete({{ $topic->id }})"><li class="fa fa-close"></li>&nbsp;@lang('navigation.button.remove-topic')</a>
         </div>
     </div>
 </div>
@@ -44,11 +44,15 @@
 
     @foreach($posts as $post)
         <div class="post columns is-gapless">
-            <button class="remove button is-danger is-small" @click="onPostDelete({{ $post->id }})">Удалить</button>
+            @if(Auth::check())
+            <button class="remove button is-danger is-small" @click="onPostDelete({{ $post->id }})">
+                @lang('navigation.button.delete')
+            </button>
+            @endif
             <div class="author column is-3 has-text-centered">
                 <p class="name title is-4">{{ $post->user->full_name }}</p>
                 <p class="role subtitle is-6">{{ $post->user->login }}</p>
-                <p class="role subtitle is-6">{{ $post->user->role->name }}</p>
+                <p class="role subtitle is-6">@lang('user.role.' . $post->user->role->title)</p>
             </div>
             <div class="body column" style="position: relative">
                 <div class="content">
@@ -62,7 +66,7 @@
 @else
     <div class="hero is-medium">
         <div class="hero-body has-text-centered">
-            <h1 class="title">В данной теме нет сообщений</h1>
+            <h1 class="title">@lang('message.topic.empty')</h1>
         </div>
     </div>
 @endif
@@ -80,16 +84,16 @@
 @if(! Auth::check())
     <div id="reply" class="post-form hero is-medium is-info has-text-centered">
         <div class="hero-body">
-            <p>Вы должны авторизоваться для того, чтобы оставить сообщение.</p>
+            <p>@lang('message.sign-in-needed')</p>
             <br>
-            <button class="button is-inverted is-info" @click="loginModal.show = true">Авторизоваться</button>
+            <button class="button is-inverted is-info" @click="loginModal.show = true">@lang('navigation.button.sign-in')</button>
         </div>
     </div>
 @else
     @if(Auth::user()->blocked)
     <div id="reply" class="post-form hero is-medium is-dark has-text-centered">
         <div class="hero-body">
-            <p>Вы заблокированы.</p>
+            <p>@lang('message.post.blocked')</p>
         </div>
     </div>
     @else
@@ -100,12 +104,12 @@
                 <div class="author column is-3 has-text-centered">
                     <p class="name title is-4">{{ Auth::user()->full_name }}</p>
                     <p class="role subtitle is-6">{{ Auth::user()->login }}</p>
-                    <p class="role subtitle is-6">{{ Auth::user()->role->name }}</p>
+                    <p class="role subtitle is-6">@lang('user.role.' . Auth::user()->role->title)</p>
                 </div>
                 <div class="column">
                     <div class="field">
                         <p class="control">
-                            <textarea class="textarea" placeholder="Содержимое сообщения" v-model="postContent"></textarea>
+                            <textarea class="textarea" placeholder="@lang('message.post.placeholder')" v-model="postContent"></textarea>
                         </p>
                     </div>
                 </div>
@@ -113,7 +117,7 @@
             
             <div class="level">
                 <div class="level-item">
-                    <button class="button is-primary" @click="onPostAdd({{ $topic->id }})">Отправить</button>
+                    <button class="button is-primary" @click="onPostAdd({{ $topic->id }})">@lang('navigation.button.send')</button>
                 </div>
             </div>
 

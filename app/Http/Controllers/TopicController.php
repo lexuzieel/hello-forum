@@ -14,7 +14,7 @@ class TopicController extends Controller
         if(! isset($topic)) return redirect(route('section.index'));
 
         $breadcrumbs = [
-            'Разделы' => route('section.index'),
+            __('navigation.breadcrumbs.index') => route('section.index'),
             str_limit($topic->section->name, 20) => route('section.show', ['id' => $topic->section->id]),
             str_limit($topic->name, 20)
         ];

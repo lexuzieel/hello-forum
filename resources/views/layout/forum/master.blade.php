@@ -22,13 +22,15 @@
                 
                     @if(Auth::check())
                     <div class="level-item">
-                        Вы вошли как {{ Auth::user()->login }} ({{ mb_strtolower(Auth::user()->role->name) }})
+                        @lang('message.signed-as', [
+                            'username' => Auth::user()->login, 'role' => mb_strtolower(__('user.role.' . Auth::user()->role->title))
+                        ])
                         &nbsp;
                     </div>
                     
                     <div class="level-item">
                         <a class="button is-small" href="/logout">
-                            Выйти&nbsp;
+                            @lang('navigation.button.sign-out')&nbsp;
                             <span class="icon is-small">
                                 <i class="fa fa-angle-right"></i>
                             </span>
@@ -36,7 +38,7 @@
                     </div>
                     @else
                         <div class="level-item">
-                            <button class="button is-primary" @click="loginModal.show = true">Авторизоваться</button>
+                            <button class="button is-primary" @click="loginModal.show = true">@lang('navigation.button.sign-in')</button>
                         </div>
                     @endif
 
@@ -44,24 +46,26 @@
             </div>
             <div class="level">
                 <div class="level-left">
-
-                    <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
-                        <button class="button is-primary" @click="loginModal.show = true">Авторизоваться</button>
-                    </div>
-                    <!--
-                    <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
-                        Вы вошли как username (администратор)
-                        &nbsp;
-                    </div>
-                    <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
-                        <button class="button is-small">
-                            Выйти&nbsp;
-                            <span class="icon is-small">
-                                <i class="fa fa-angle-right"></i>
-                            </span>
-                        </button>
-                    </div>
-                    -->
+                    @if(Auth::check())
+                        <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
+                            @lang('message.signed-as', [
+                                'username' => Auth::user()->login, 'role' => mb_strtolower(__('user.role.' . Auth::user()->role->title))
+                            ])
+                            &nbsp;
+                        </div>
+                        <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
+                            <button class="button is-small">
+                                @lang('navigation.button.sign-out')&nbsp;
+                                <span class="icon is-small">
+                                    <i class="fa fa-angle-right"></i>
+                                </span>
+                            </button>
+                        </div>
+                    @else
+                        <div class="level-item is-hidden-desktop is-hidden-touch-only is-hidden-mobile">
+                            <button class="button is-primary" @click="loginModal.show = true">@lang('navigation.button.sign-in')</button>
+                        </div>
+                    @endif
                 </div>
                 <!--
                 <div class="level-right">

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Carbon\Carbon::setLocale(App::getLocale());
     }
 
     /**
@@ -23,10 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /*
         $this->app->singleton(\Faker\Generator::class, function () {
             return \Faker\Factory::create('ru_RU');
         });
-
-        \Carbon\Carbon::setLocale('ru');
+        */
     }
 }

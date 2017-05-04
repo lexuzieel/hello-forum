@@ -4,7 +4,7 @@
         <form class="login-form" @submit.prevent>
 
             <div class="field">
-                <label class="label">Логин</label>
+                <label class="label">@lang('modal.signin.fields.login')</label>
                 <p class="control has-icons-left has-icons-right">
                     <input class="input" type="text" name="login" v-model="loginModal.fields.login">
                     <span class="icon is-small is-left">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="field">
-                <label class="label">Пароль</label>
+                <label class="label">@lang('modal.signin.fields.password')</label>
                 <p class="control has-icons-left has-icons-right">
                     <input class="input" type="password" name="password" v-model="loginModal.fields.password">
                     <span class="icon is-small is-left">
@@ -40,10 +40,10 @@
                 
                     <div class="field has-addons">
                         <p class="control">
-                            <button class="button is-primary" @click="onLogin">Авторизоваться</button>
+                            <button class="button is-primary" @click="onLogin">@lang('navigation.button.sign-in')</button>
                         </p>
                         <p class="control">
-                            <button class="button is-light" @click="onRegistration">Зарегистрироваться</button>
+                            <button class="button is-light" @click="onRegistration">@lang('navigation.button.sign-up')</button>
                         </p>
                     </div>
 

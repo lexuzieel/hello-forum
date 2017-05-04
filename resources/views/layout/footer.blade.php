@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        Исходный код проекта на
+        Source code of the project on
         <a href="https://github.com/lexuzieel/hello-forum" target="_blank">
           <span class="icon"><i class="fa fa-github"></i></span>GitHub
         </a>
