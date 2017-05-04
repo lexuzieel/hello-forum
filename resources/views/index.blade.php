@@ -26,7 +26,7 @@
 @foreach($sections as $section)
     <div class="column is-half">
         <button class="remove button is-danger is-small" @click="onSectionDelete" id="{{ $section->id }}">Удалить</button>
-        <a class="section box" href="{{ route('topic.index', ['id' => $section->id]) }}">
+        <a class="section box" href="{{ route('section.show', ['id' => $section->id]) }}#content">
             <p class="title">{{ $section->name }}</p>
             <p class="subtitle">
                 <span class="is-pulled-left">{{ $section->user->login }}</span>

@@ -29,7 +29,27 @@ class User extends Authenticatable
         'password', 'remember_token'
     ];
 
+    public function getFullNameAttribute() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getBlockedAttribute() {
+        return $this->role->level <= 0;
+    }
+
     public function role() {
         return $this->belongsTo(Role::class);
+    }
+
+    public function sections() {
+        return $this->hasMany(Section::class);
+    }
+
+    public function topics() {
+        return $this->hasMany(Topic::class);
+    }
+
+    public function posts() {
+        return $this->hasMany(Post::class);
     }
 }

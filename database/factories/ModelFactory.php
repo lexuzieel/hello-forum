@@ -48,7 +48,7 @@ $factory->define(App\Topic::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     
     return [
-        'content' => join('<br>', $faker->paragraphs(random_int(1, 10))),
+        'content' => join('<br><br>', $faker->paragraphs(random_int(1, 10))),
         'user_login' => DB::table('users')->get()->random()->login,
         'topic_id' => DB::table('topics')->get()->random()->id
     ];

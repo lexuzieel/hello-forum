@@ -3,7 +3,9 @@
 @section('content')
 
     @include('layout.header')
-            
+
+    <a id="content"></a>
+
     @yield('top')
     
     <section class="section">

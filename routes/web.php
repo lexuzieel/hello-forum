@@ -13,27 +13,39 @@
 
 Route::get('/', [
     'as' => 'section.index',
-    'uses' => 'SectionController@show'
+    'uses' => 'SectionController@index'
 ]);
 
-Route::post('/section/add', [
+Route::post('section/add', [
     'as' => 'section.add',
     'uses' => 'SectionController@add'
 ]);
 
-Route::post('/section/remove', [
+Route::post('section/remove', [
     'as' => 'section.remove',
     'uses' => 'SectionController@remove'
 ]);
 
-Route::get('/section/{id}', [
-    'as' => 'topic.index',
-    'uses' => 'TopicController@show'
+Route::get('section/{id}', [
+    'as' => 'section.show',
+    'uses' => 'SectionController@show'
 ]);
 
-Route::get('section/topic', function () {
-    return view('topic');
-});
+Route::get('section/topic/{id}', [
+    'as' => 'topic.show',
+    'uses' => 'TopicController@show'
+]);
+/*
+Route::get('section/topic/add', [
+    'as' => 'topic.add',
+    'uses' => 'TopicController@add'
+]);
+
+Route::get('section/topic/remove', [
+    'as' => 'topic.remove',
+    'uses' => 'TopicController@remove'
+]);
+*/
 
 Route::post('login', 'LoginController@authenticate');
 Route::post('register', 'LoginController@register');

@@ -8,12 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
-    public function show() {
+    public function index() {
         $breadcrumbs = [
-            'Разделы' => '/'
+            'Разделы' => route('section.index')
         ];
         return view('index')->with('breadcrumbs', $breadcrumbs)
                             ->with('sections', Section::latest()->get()->all());
+    }
+
+    public function show($id) {
+        $section = Section::find($id);
+        if(! isset($section)) return redirect(route('section.index'));
+
+        $breadcrumbs = [
+            'Разделы' => route('section.index'),
+            str_limit($section->name, 20) => route('section.index')
+        ];
+        return view('section')->with('breadcrumbs', $breadcrumbs)
+                            ->with('section', $section)
+                            ->with('topics', $section->topics()->latest()->get()->all());
     }
 
     public function add(Request $request) {
