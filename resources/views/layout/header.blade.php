@@ -3,10 +3,10 @@
     <div class="container has-text-centered">
       <a href="/">
         <h1 class="title">
-          Форум
+          Forum
         </h1>
         <h2 class="subtitle">
-          Проект курсовой работы
+          Hello World App
         </h2>
       </a>
     </div>
