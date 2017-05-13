@@ -1,7 +1,8 @@
 <?php
 
 return [
-
+    
+    'title' => 'Forum',
     'breadcrumbs' => [
         'index' => 'Index'
     ],
